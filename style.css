@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.form-container {
+    padding: 2rem;
+    transition: transform 0.6s ease-in-out;
+}
+
+.register-container {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+}
+
+.container.active .login-container {
+    transform: translateX(-100%);
+}
+
+.container.active .register-container {
+    transform: translateX(-100%);
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #6e8efb;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #6e8efb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #5a7de3;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.switch-form a {
+    color: #6e8efb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Dashboard */
+.dashboard {
+    display: block;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard.hidden {
+    display: none;
+}
+
+.dashboard header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.balance {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Operações */
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: #6e8efb;
+    border-bottom: 2px solid #6e8efb;
+}
+
+.tab-content {
+    display: none;
+    padding: 1rem 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Extrato */
+.statement {
+    margin-top: 2rem;
+}
+
+.statement-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Adicionar estas regras */
+.statement.hidden {
+    display: none;
+}
+
+#statement-tab {
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#statement-tab h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    animation: fadeIn 0.5s;
+}
+
+.transaction-item.deposit {
+    border-left: 3px solid #4CAF50;
+}
+
+.transaction-item.withdraw {
+    border-left: 3px solid #F44336;
+}
+
+.transaction-item.transfer {
+    border-left: 3px solid #2196F3;
+}
+
+/* Notificações */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 300px;
+    animation: slideIn 0.5s;
+    z-index: 1001;
+}
+
+.notification.success {
+    background: #4CAF50;
+}
+
+.notification.error {
+    background: #F44336;
+}
+
+.notification.info {
+    background: #2196F3;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    .dashboard {
+        width: 95%;
+    }
+}

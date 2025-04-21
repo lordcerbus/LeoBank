@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Container Principal -->
+    <div class="container" id="container">
+        <!-- Tela de Login -->
+        <div class="form-container login-container">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <input type="email" id="loginEmail" placeholder="E-mail" required>
+                <input type="password" id="loginPassword" placeholder="Senha" required>
+                <button type="submit">Acessar</button>
+                <p class="switch-form">Não tem conta? <a href="#" id="showRegister">Cadastre-se</a></p>
+            </form>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div class="form-container register-container">
+            <form id="registerForm">
+                <h1>Cadastro</h1>
+                <input type="text" id="registerName" placeholder="Nome completo" required>
+                <input type="email" id="registerEmail" placeholder="E-mail" required>
+                <input type="password" id="registerPassword" placeholder="Senha" required>
+                <button type="submit">Criar conta</button>
+                <p class="switch-form">Já tem conta? <a href="#" id="showLogin">Fazer login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard hidden" id="dashboard">
+        <header>
+            <div class="header-left">
+                <h1>Olá, <span id="userName"></span>!</h1>
+                <p class="account-number">Conta: <span id="accountNumber"></span></p>
+            </div>
+            <button id="logout">Sair</button>
+        </header>
+
+        <div class="balance">
+            <h2>Saldo atual</h2>
+            <p class="amount">R$ <span id="userBalance">0,00</span></p>
+        </div>
+
+        <!-- Seção de Operações -->
+        <div class="transaction-section">
+            <h2>Operações</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="deposit">Depositar</button>
+                <button class="tab-btn" data-tab="withdraw">Sacar</button>
+                <button class="tab-btn" data-tab="transfer">Transferir</button>
+                <button class="tab-btn" data-tab="statement">Extrato</button>
+            </div>
+
+            <!-- Abas de Operações -->
+            <div class="tab-content active" id="deposit-tab">
+                <form id="depositForm">
+                    <input type="number" id="depositAmount" placeholder="Valor (R$)" min="0.01" step="0.01" required>
+                    <button type="submit">Confirmar</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="withdraw-tab">
+                <form id="withdrawForm">
+                    <input type="number" id="withdrawAmount" placeholder="Valor (R$)" min="0.01" step="0.01" required>
+                    <button type="submit">Confirmar</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="transfer-tab">
+                <form id="transferForm">
+                    <input type="email" id="transferEmail" placeholder="E-mail do destinatário" required>
+                    <input type="number" id="transferAmount" placeholder="Valor (R$)" min="0.01" step="0.01" required>
+                    <button type="submit">Transferir</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Extrato Bancário -->
+        <div class="statement hidden" id="statement-tab">
+            <h2>Extrato</h2>
+                <!-- Transações serão inseridas aqui via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificações -->
+    <div id="notificationsContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
